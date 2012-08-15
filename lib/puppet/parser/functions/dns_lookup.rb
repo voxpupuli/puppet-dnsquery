@@ -9,7 +9,7 @@ module Puppet::Parser::Functions
     require 'resolv'
 
     Resolv::DNS.new.getaddresses(arguments[0]).collect do |res|
-      res.address.to_s
+      res.to_s
     end
   end
 end
