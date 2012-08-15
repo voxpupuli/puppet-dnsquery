@@ -11,15 +11,16 @@ module Puppet::Parser::Functions
     raise(Puppet::ParseError, "dns_mx(): Wrong number of arguments " +
           "given (#{arguments.size} for 1 or 2)") if arguments.size < 1 or arguments.size > 2
 
-    result = Resolv::DNS.new.getresources(arguments[0],Resolv::DNS::Resource::IN::MX)
-
-    result.each.collect do |res|
+    Resolv::DNS.new.getresources(arguments[0],Resolv::DNS::Resource::IN::MX).collect do |res|
       if arguments.size == 1 then
-        [res.preference, res.exchange]
+        [res.preference, res.exchange.to_s]
       else
-        begin
-          res.send(arguments[1])
-        rescue
+        case arguments[1]
+        when 'preference'
+          res.preference
+        when 'exchange'
+          res.exchange.to_s
+        else
           raise Puppet::ParseError "dns_mx(): invalid value #{arguments[1]} for second argument"
         end
       end

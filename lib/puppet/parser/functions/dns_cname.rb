@@ -8,6 +8,6 @@ module Puppet::Parser::Functions
     raise(Puppet::ParseError, "dns_cname(): Wrong number of arguments " +
           "given (#{arguments.size} for 1)") if arguments.size != 1
 
-    Resolv::DNS.new.getresource(arguments[0],Resolv::DNS::Resource::IN::CNAME).name
+    Resolv::DNS.new.getresource(arguments[0],Resolv::DNS::Resource::IN::CNAME).name.to_s
   end
 end

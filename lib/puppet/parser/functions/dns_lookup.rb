@@ -8,6 +8,8 @@ module Puppet::Parser::Functions
   ) do |arguments|
     require 'resolv'
 
-    Resolv::DNS.new.getaddresses(arguments[0])
+    Resolv::DNS.new.getaddresses(arguments[0]).collect do |res|
+      res.address.to_s
+    end
   end
 end
