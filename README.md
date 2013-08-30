@@ -33,7 +33,7 @@ if supplied an array of only those elements is returned.
 
 ### dns_ptr
 
-Retrieves a DNS PTR record and returns it as a string.
+Retrieves DNS PTR records and returns it as an array of strings.
 
 ### dns_srv
 
