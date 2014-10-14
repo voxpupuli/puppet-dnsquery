@@ -1,6 +1,6 @@
 {
   "name": "dalen-dnsquery",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "author": "Erik Dalen <erik.gustav.dalen@gmail.com>",
   "summary": "Query functions for DNS",
   "license": "Expat License",
