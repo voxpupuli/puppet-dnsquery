@@ -2,7 +2,7 @@
 # does a DNS lookup and returns an array of strings of the results
 
 module Puppet::Parser::Functions
-  newfunction(:dns_lookup, :type => :rvalue, :doc => <<-EOS
+  newfunction(:dns_lookup, :type => :rvalue, :arity => 1, :doc => <<-EOS
     Does a DNS lookup and returns an array of addresses.
     EOS
   ) do |arguments|
