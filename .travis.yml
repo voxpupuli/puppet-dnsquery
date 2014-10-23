@@ -5,3 +5,12 @@ rvm:
   - 2.0.0
   - 2.1.3
 script: bundle exec rake spec
+deploy:
+  provider: puppetforge
+  user: dalen
+  password:
+    secure: "QhbYaToDBuVm8HzSkdSwIAsDBif3446CDWY5IbgNUqXrDkgTvfHb5PqzYXrR9HLZP03WRITiwsTVi2/JuFNt62Au6qhe3Nxknz6eH9YyjZ3TxJd5lm4MRL1GLi8WXwJZCT9pJA4+CfLF/ZuPqBIj7cnzZCXUm1ca3dghbD8jnF8="
+  on:
+    tags: true
+    all_branches: true
+    rvm: 2.1.3
