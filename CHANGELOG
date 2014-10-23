@@ -1,0 +1,2 @@
+2.0.0:
+ * Raise an exception on empty replies.
