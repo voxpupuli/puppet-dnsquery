@@ -19,4 +19,8 @@ describe 'the dns_txt function' do
     expect(results).to all(be_a Array)
     expect(results).to all(all(be_a String))
   end
+
+  it 'should raise an error on empty reply' do
+    expect { scope.function_dns_txt(['foo.example.com']) }.to raise_error(Resolv::ResolvError)
+  end
 end

@@ -11,10 +11,12 @@ module Puppet::Parser::Functions
     res = Resolv::DNS.new
     arg = arguments[0]
 
-    if arg.is_a? Array
+    ret = if arg.is_a? Array
       arg.collect { |e| res.getaddresses(e).to_s }.flatten
     else
       res.getaddresses(arg).collect { |r| r.to_s }
     end
+    raise Resolv::ResolvError, "DNS result has no information for #{arg}" if ret.empty?
+    ret
   end
 end

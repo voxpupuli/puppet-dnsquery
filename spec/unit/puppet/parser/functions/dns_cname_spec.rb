@@ -17,4 +17,8 @@ describe 'the dns_cname function' do
     result = scope.function_dns_cname(['mail.google.com'])
     expect(result).to be_a String
   end
+
+  it 'should raise an error on empty reply' do
+    expect { scope.function_dns_cname(['foo.example.com']) }.to raise_error(Resolv::ResolvError)
+  end
 end

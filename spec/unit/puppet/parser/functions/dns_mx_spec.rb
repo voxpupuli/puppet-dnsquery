@@ -43,4 +43,8 @@ describe 'the dns_mx function' do
   it 'should raise a ArgumentError for invalid values to second argument' do
     expect { scope.function_dns_mx(['google.com', 'foo']) }.to raise_error(ArgumentError)
   end
+
+  it 'should raise an error on empty reply' do
+    expect { scope.function_dns_mx(['foo.example.com']) }.to raise_error(Resolv::ResolvError)
+  end
 end

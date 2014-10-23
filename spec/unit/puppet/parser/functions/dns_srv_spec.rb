@@ -57,4 +57,8 @@ describe 'the dns_srv function' do
   it 'should raise a ArgumentError for invalid values to second argument' do
     expect { scope.function_dns_srv(['_spotify-client._tcp.spotify.com', 'foo']) }.to raise_error(ArgumentError)
   end
+
+  it 'should raise an error on empty reply' do
+    expect { scope.function_dns_srv(['_foo._tcp.example.com']) }.to raise_error(Resolv::ResolvError)
+  end
 end

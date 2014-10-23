@@ -20,4 +20,8 @@ describe 'the dns_a function' do
       expect(res).to match(/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/)
     end
   end
+
+  it 'should raise an error on empty reply' do
+    expect { scope.function_dns_a(['foo.example.com']) }.to raise_error(Resolv::ResolvError)
+  end
 end

@@ -6,8 +6,10 @@ module Puppet::Parser::Functions
   ) do |arguments|
     require 'resolv'
 
-    Resolv::DNS.new.getresources(arguments[0],Resolv::DNS::Resource::IN::AAAA).collect do |res|
+    ret = Resolv::DNS.new.getresources(arguments[0],Resolv::DNS::Resource::IN::AAAA).collect do |res|
       res.address.to_s
     end
+    raise Resolv::ResolvError, "DNS result has no information for #{arguments[0]}" if ret.empty?
+    ret
   end
 end
