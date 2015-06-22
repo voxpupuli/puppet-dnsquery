@@ -12,7 +12,7 @@ module Puppet::Parser::Functions
     arg = arguments[0]
 
     ret = if arg.is_a? Array
-      arg.collect { |e| res.getaddresses(e).to_s }.flatten
+      arg.collect { |e| res.getaddresses(e).map(&:to_s) }.flatten
     else
       res.getaddresses(arg).collect { |r| r.to_s }
     end
