@@ -1,2 +1,5 @@
+2.0.1:
+ * correctly convert array of Resolv::IPv4 or Resolv::IPv6 to array strings
+
 2.0.0:
  * Raise an exception on empty replies.
