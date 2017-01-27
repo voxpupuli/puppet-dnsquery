@@ -10,7 +10,7 @@ module Puppet::Parser::Functions
     require 'resolv'
 
     raise(ArgumentError, "dns_srv(): Wrong number of arguments " +
-          "given (#{arguments.size} for 2 or 3)") if arguments.size > 3
+          "given (#{arguments.size} for 2 or 4)") if arguments.size > 4
 
     if arguments[2].is_a? String
       config_info = {
