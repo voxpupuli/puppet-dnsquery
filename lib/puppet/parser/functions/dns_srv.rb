@@ -4,14 +4,25 @@ module Puppet::Parser::Functions
     array will be an array of [priority, weight, port, target] arrays.
     Second argument is optional and can be either 'priority', 'weight', 'port'
     or 'target', if supplied an array of only those elements is returned.
+    Third argument, if provided, indicates the target DNS server.
     EOS
   ) do |arguments|
     require 'resolv'
 
     raise(ArgumentError, "dns_srv(): Wrong number of arguments " +
-          "given (#{arguments.size} for 1 or 2)") if arguments.size > 2
+          "given (#{arguments.size} for 2 or 3)") if arguments.size > 3
 
-    ret = Resolv::DNS.new.getresources(arguments[0],Resolv::DNS::Resource::IN::SRV).collect do |res|
+    if arguments[2].is_a? String
+      config_info = {
+        :nameserver = arguments[3],
+        :search = arguments[4],
+        :ndots = 1
+      }
+    else
+      config_info = nil
+    end
+
+    ret = Resolv::DNS.new(config_info).getresources(arguments[0],Resolv::DNS::Resource::IN::SRV).collect do |res|
       if arguments.size == 1 then
         [res.priority, res.weight, res.port, res.target.to_s]
       else
