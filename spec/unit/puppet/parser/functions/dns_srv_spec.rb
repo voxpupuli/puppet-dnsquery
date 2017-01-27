@@ -13,8 +13,8 @@ describe 'the dns_srv function' do
     expect { scope.function_dns_srv([]) }.to raise_error(ArgumentError)
   end
 
-  it 'should raise a ArgumentError if there is more than 2 arguments' do
-    expect { scope.function_dns_srv(['foo', 'bar', 'baz']) }.to raise_error(ArgumentError)
+  it 'should raise a ArgumentError if there is more than 4 arguments' do
+    expect { scope.function_dns_srv(['foo', 'bar', 'baz', 'qux', 'grault']) }.to raise_error(ArgumentError)
   end
 
   it 'should return a list of SRV records when doing a lookup' do

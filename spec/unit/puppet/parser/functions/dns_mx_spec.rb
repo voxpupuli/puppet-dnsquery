@@ -13,8 +13,8 @@ describe 'the dns_mx function' do
     expect { scope.function_dns_mx([]) }.to raise_error(ArgumentError)
   end
 
-  it 'should raise a ArgumentError if there is more than 2 arguments' do
-    expect { scope.function_dns_mx(['foo', 'bar', 'baz']) }.to raise_error(ArgumentError)
+  it 'should raise a ArgumentError if there is more than 4 arguments' do
+    expect { scope.function_dns_mx(['foo', 'bar', 'baz', 'quux', 'grault']) }.to raise_error(ArgumentError)
   end
 
   it 'should return a list of MX records when doing a lookup' do
