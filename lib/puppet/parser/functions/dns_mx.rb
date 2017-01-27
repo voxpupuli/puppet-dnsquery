@@ -13,8 +13,8 @@ module Puppet::Parser::Functions
 
     if arguments[2].is_a? String
       config_info = {
-        :nameserver = arguments[3],
-        :search = arguments[4],
+        :nameserver = arguments[2],
+        :search = arguments[3],
         :ndots = 1
       }
     else
