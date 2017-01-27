@@ -5,6 +5,16 @@ module Puppet::Parser::Functions
   ) do |arguments|
     require 'resolv'
 
-    Resolv::DNS.new.getresource(arguments[0],Resolv::DNS::Resource::IN::CNAME).name.to_s
+    if arguments[2].is_a? String
+      config_info = {
+        :nameserver = arguments[3],
+        :search = arguments[4],
+        :ndots = 1
+      }
+    else
+      config_info = nil
+    end
+
+    Resolv::DNS.new(config_info).getresource(arguments[0],Resolv::DNS::Resource::IN::CNAME).name.to_s
   end
 end

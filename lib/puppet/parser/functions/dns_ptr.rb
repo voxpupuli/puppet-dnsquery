@@ -5,7 +5,17 @@ module Puppet::Parser::Functions
   ) do |arguments|
     require 'resolv'
 
-    ret = Resolv::DNS.new.getresources(arguments[0],Resolv::DNS::Resource::IN::PTR).map { |r| r.name.to_s }
+    if arguments[2].is_a? String
+      config_info = {
+        :nameserver = arguments[3],
+        :search = arguments[4],
+        :ndots = 1
+      }
+    else
+      config_info = nil
+    end
+
+    ret = Resolv::DNS.new(config_info).getresources(arguments[0],Resolv::DNS::Resource::IN::PTR).map { |r| r.name.to_s }
     raise Resolv::ResolvError, "DNS result has no information for #{arguments[0]}" if ret.empty?
     ret
   end
