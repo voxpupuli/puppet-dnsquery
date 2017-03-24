@@ -1,6 +1,6 @@
 {
   "name": "dalen-dnsquery",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "author": "Erik Dalen <erik.gustav.dalen@gmail.com>",
   "summary": "Query functions for DNS",
   "license": "Expat License",
@@ -8,6 +8,6 @@
   "project_page": "https://github.com/dalen/puppet-dnsquery",
   "issues_url": "https://github.com/dalen/puppet-dnsquery/issues",
   "dependencies": [
-  
+
   ]
 }
