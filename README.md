@@ -6,6 +6,8 @@ This module contains query functions for DNS for use from Puppet.
 Usage
 -----
 
+All functions can take a optional second lambda argument that is called if the lookup returned no values. Then the result of the lambda will be used instead.
+
 ### dns_lookup
 
 Does a DNS lookup and returns an array of addresses.
@@ -27,9 +29,7 @@ Retrieves a DNS CNAME record and returns it as a string.
 ### dns_mx
 
 Retrieves DNS MX records and returns it as an array. Each record in the
-array will be an array of [preference, exchange] arrays.
-Second argument is optional and can be either 'preference' or 'exchange',
-if supplied an array of only those elements is returned.
+array will be an array of hashes containing a `preference` & `exchange` key.
 
 ### dns_ptr
 
@@ -38,9 +38,7 @@ Retrieves DNS PTR records and returns it as an array of strings.
 ### dns_srv
 
 Retrieves DNS SRV records and returns it as an array. Each record in the
-array will be an array of [priority, weight, port, target] arrays.
-Second argument is optional and can be either 'priority', 'weight', 'port'
-or 'target', if supplied an array of only those elements is returned.
+array will be an array of hashes containing a `priority`, `weight`, `port` and `target` key.
 
 ### dns_txt
 
