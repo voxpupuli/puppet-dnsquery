@@ -1,9 +1,9 @@
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.3
-script: bundle exec rake spec
+  - 1.9
+  - 2.0
+  - 2.1
+  - 2.2
 deploy:
   provider: puppetforge
   user: dalen
@@ -12,4 +12,4 @@ deploy:
   on:
     tags: true
     all_branches: true
-    rvm: 2.1.3
+    rvm: 2.1
