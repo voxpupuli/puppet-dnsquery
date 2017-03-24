@@ -8,7 +8,7 @@ deploy:
   provider: puppetforge
   user: dalen
   password:
-    secure: "QhbYaToDBuVm8HzSkdSwIAsDBif3446CDWY5IbgNUqXrDkgTvfHb5PqzYXrR9HLZP03WRITiwsTVi2/JuFNt62Au6qhe3Nxknz6eH9YyjZ3TxJd5lm4MRL1GLi8WXwJZCT9pJA4+CfLF/ZuPqBIj7cnzZCXUm1ca3dghbD8jnF8="
+    secure: "SMdGmtmqccOhYXttmMIbIJgXcOYErkDMYxdMo5qir2CnZT1qpaDKbzNWbeBVJLG5V55+M5utmGmznq6OzSoueD7z6vYjJZh+4fVUZeC0QhOpHkpptpdcm/hbNqEsW3O1sjgrQOdOHmFgBK+oiw70PdtiiQu8H2NEmEhnVbV1Xtg="
   on:
     tags: true
     all_branches: true
