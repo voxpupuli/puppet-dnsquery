@@ -69,6 +69,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  facter
   puppet (~> 4)
   puppet-blacksmith
   puppetlabs_spec_helper
