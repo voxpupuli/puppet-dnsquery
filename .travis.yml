@@ -1,15 +1,19 @@
 language: ruby
-rvm:
-  - 1.9
-  - 2.0
-  - 2.1
-  - 2.2
-deploy:
-  provider: puppetforge
-  user: dalen
-  password:
-    secure: "SMdGmtmqccOhYXttmMIbIJgXcOYErkDMYxdMo5qir2CnZT1qpaDKbzNWbeBVJLG5V55+M5utmGmznq6OzSoueD7z6vYjJZh+4fVUZeC0QhOpHkpptpdcm/hbNqEsW3O1sjgrQOdOHmFgBK+oiw70PdtiiQu8H2NEmEhnVbV1Xtg="
-  on:
-    tags: true
-    all_branches: true
-    rvm: 2.1
+jobs:
+  include:
+    - stage: test
+      rvm:
+        - 2.2
+        - 2.3
+        - 2.4
+        - 2.5
+    - stage: deploy
+      script: skip
+      deploy:
+        provider: puppetforge
+        user: dalen
+        password:
+          secure: "SMdGmtmqccOhYXttmMIbIJgXcOYErkDMYxdMo5qir2CnZT1qpaDKbzNWbeBVJLG5V55+M5utmGmznq6OzSoueD7z6vYjJZh+4fVUZeC0QhOpHkpptpdcm/hbNqEsW3O1sjgrQOdOHmFgBK+oiw70PdtiiQu8H2NEmEhnVbV1Xtg="
+        on:
+          tags: true
+          all_branches: true
