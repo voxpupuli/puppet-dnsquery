@@ -8,6 +8,7 @@ jobs:
         - 2.4
         - 2.5
     - stage: deploy
+      rvm: 2.5
       script: skip
       deploy:
         provider: puppetforge
