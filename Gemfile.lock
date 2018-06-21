@@ -29,7 +29,7 @@ GEM
     puppet-lint (2.3.5)
     puppet-syntax (2.4.1)
       rake
-    puppetlabs_spec_helper (2.9.0)
+    puppetlabs_spec_helper (2.9.1)
       mocha (~> 1.0)
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
