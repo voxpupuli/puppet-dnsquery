@@ -51,7 +51,7 @@ GEM
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
-    rspec-puppet (2.6.13)
+    rspec-puppet (2.6.14)
       rspec
     rspec-support (3.7.1)
     unf (0.1.4)
