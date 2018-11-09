@@ -29,7 +29,7 @@ GEM
     puppet-lint (2.3.6)
     puppet-syntax (2.4.1)
       rake
-    puppetlabs_spec_helper (2.11.0)
+    puppetlabs_spec_helper (2.12.0)
       mocha (~> 1.0)
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
@@ -45,7 +45,7 @@ GEM
       rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
-    rspec-expectations (3.8.1)
+    rspec-expectations (3.8.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-mocks (3.8.0)
