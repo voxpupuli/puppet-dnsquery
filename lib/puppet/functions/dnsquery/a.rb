@@ -5,7 +5,7 @@
 #
 # An optional lambda can be given to return a default value in case the
 # lookup fails. The lambda will only be called if the lookup failed.
-Puppet::Functions.create_function(:dns_a) do
+Puppet::Functions.create_function(:'dnsquery::a') do
   dispatch :dns_a do
     param 'String', :record
   end
@@ -16,8 +16,11 @@ Puppet::Functions.create_function(:dns_a) do
   end
 
   def dns_a(record)
-    Puppet.deprecation_warning('dns_a', 'This method is deprecated please use the namspaced version dnsquery::a')
-    call_function('dnsquery::a', record)
+    Resolv::DNS.new.getresources(
+      record, Resolv::DNS::Resource::IN::A
+    ).map do |res|
+      res.address.to_s
+    end
   end
 
   def dns_a_with_default(record)

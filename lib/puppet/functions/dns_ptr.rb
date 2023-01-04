@@ -15,11 +15,8 @@ Puppet::Functions.create_function(:dns_ptr) do
   end
 
   def dns_ptr(record)
-    Resolv::DNS.new.getresources(
-      record, Resolv::DNS::Resource::IN::PTR
-    ).map do |res|
-      res.name.to_s
-    end
+    Puppet.deprecation_warning('dns_ptr', 'This method is deprecated please use the namspaced version dnsquery::ptr')
+    call_function('dnsquery::ptr', record)
   end
 
   def dns_ptr_with_default(record)
