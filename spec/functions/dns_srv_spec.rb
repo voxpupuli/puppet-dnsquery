@@ -1,9 +1,10 @@
 #! /usr/bin/env ruby -S rspec
+# frozen_string_literal: true
 
 require 'spec_helper'
 
 describe 'dns_srv' do
-  it 'should return a list of MX records when doing a lookup' do
+  it 'returns a list of MX records when doing a lookup' do
     results = subject.execute('_spotify-client._tcp.spotify.com')
     expect(results).to be_a Array
     expect(results).to all(be_a(Hash))
