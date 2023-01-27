@@ -19,7 +19,7 @@ Puppet::Functions.create_function(:'dnsquery::aaaa') do
     Resolv::DNS.new.getresources(
       record, Resolv::DNS::Resource::IN::AAAA
     ).map do |res|
-      res.address.to_s
+      IPAddr.new(res.address.to_s).to_s
     end
   end
 
