@@ -5,7 +5,7 @@ require 'spec_helper'
 
 describe 'dns_cname' do
   it 'returns a CNAME destination when doing a lookup' do
-    result = subject.execute('mail.google.com')
+    result = subject.execute('en.wikipedia.org')
     expect(result).to be_a String
   end
 
