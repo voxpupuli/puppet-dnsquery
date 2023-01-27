@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Retrieves DNS TXT records and returns it as an array. Each record in the
 # array will be a array containing the strings of the TXT record.
 #
@@ -16,9 +18,7 @@ Puppet::Functions.create_function(:dns_txt) do
   def dns_txt(record)
     Resolv::DNS.new.getresources(
       record, Resolv::DNS::Resource::IN::TXT
-    ).collect do |res|
-      res.strings
-    end
+    ).map(&:strings)
   end
 
   def dns_txt_with_default(record)

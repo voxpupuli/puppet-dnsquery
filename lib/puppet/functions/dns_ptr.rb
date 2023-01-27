@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Retrieves DNS A records and returns it as an array. Each record in the
 # array will be a IPv4 address.
 # An optional lambda can be given to return a default value in case the
@@ -15,7 +17,7 @@ Puppet::Functions.create_function(:dns_ptr) do
   def dns_ptr(record)
     Resolv::DNS.new.getresources(
       record, Resolv::DNS::Resource::IN::PTR
-    ).collect do |res|
+    ).map do |res|
       res.name.to_s
     end
   end
