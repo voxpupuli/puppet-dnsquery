@@ -18,6 +18,6 @@ describe 'dns_lookup' do
     is_expected.to run.
       with_params('foo.example.com').
       and_return('127.0.0.1').
-      with_lambda('127.0.0.1')
+      with_lambda {'127.0.0.1'}
   end
 end
