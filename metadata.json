@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "author": "Erik Dalen <erik.gustav.dalen@gmail.com>",
   "summary": "Query functions for DNS",
-  "license": "Expat License",
+  "license": "MIT",
   "source": "https://github.com/dalen/puppet-dnsquery.git",
   "project_page": "https://github.com/dalen/puppet-dnsquery",
   "issues_url": "https://github.com/dalen/puppet-dnsquery/issues",
