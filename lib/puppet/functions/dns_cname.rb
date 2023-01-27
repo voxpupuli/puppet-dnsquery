@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Retrieves a DNS CNAME record and returns it as a string.
 #
 # An optional lambda can be given to return a default value in case the

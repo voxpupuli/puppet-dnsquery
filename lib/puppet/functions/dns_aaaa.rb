@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Retrieves DNS AAAA records and returns it as an array. Each record in the
 # array will be a IPv6 address.
 #
@@ -16,7 +18,7 @@ Puppet::Functions.create_function(:dns_aaaa) do
   def dns_aaaa(record)
     Resolv::DNS.new.getresources(
       record, Resolv::DNS::Resource::IN::AAAA
-    ).collect do |res|
+    ).map do |res|
       res.address.to_s
     end
   end
