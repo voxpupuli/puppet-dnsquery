@@ -1,7 +1,7 @@
 {
   "name": "voxpupuli-dnsquery",
   "version": "3.0.0",
-  "author": "Erik Dalen <erik.gustav.dalen@gmail.com>",
+  "author": "Vox Pupuli",
   "summary": "Query functions for DNS",
   "license": "MIT",
   "source": "https://github.com/voxpupuli/puppet-dnsquery.git",
