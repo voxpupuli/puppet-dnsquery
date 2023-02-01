@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-describe 'dns_lookup' do
+describe 'dnsquery::lookup' do
   it 'returns a list of addresses when doing a lookup for a single record' do
     results = subject.execute('google.com')
     expect(results).to be_a Array
