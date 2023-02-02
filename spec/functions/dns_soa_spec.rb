@@ -1,9 +1,10 @@
 #! /usr/bin/env ruby -S rspec
+# frozen_string_literal: true
 
 require 'spec_helper'
 
 describe 'dns_soa' do
-  it 'should return a hash of SOA-records parts when doing a lookup' do
+  it 'must return a hash of SOA-records parts when doing a lookup' do
     results = subject.execute('google.com')
     expect(results).to be_a Hash
     expect(results['expire']).to be_a Integer
@@ -15,4 +16,3 @@ describe 'dns_soa' do
     expect(results['serial']).to be_a Integer
   end
 end
-
