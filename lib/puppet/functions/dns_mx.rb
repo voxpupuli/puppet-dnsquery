@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Retrieves DNS MX records and returns it as an array. Each record in the
 # array will be an array of hashes with a preference and exchange field.
 #
@@ -14,14 +16,8 @@ Puppet::Functions.create_function(:dns_mx) do
   end
 
   def dns_mx(record)
-    Resolv::DNS.new.getresources(
-      record, Resolv::DNS::Resource::IN::MX
-    ).collect do |res|
-      {
-        'preference' => res.preference,
-        'exchange' => res.exchange.to_s
-      }
-    end
+    Puppet.deprecation_warning('dns_mx', 'This method is deprecated please use the namspaced version dnsquery::mx')
+    call_function('dnsquery::mx', record)
   end
 
   def dns_mx_with_default(record)

@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-describe 'dns_mx' do
+describe 'dnsquery::mx' do
   it 'returns a list of MX records when doing a lookup' do
     results = subject.execute('google.com')
     expect(results).to be_a Array

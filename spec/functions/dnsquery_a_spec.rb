@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-describe 'dns_a' do
+describe 'dnsquery::a' do
   it 'returns a list of IPv4 addresses when doing a lookup' do
     results = subject.execute('google.com')
     expect(results).to be_a Array

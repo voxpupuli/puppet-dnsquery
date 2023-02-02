@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-describe 'dns_txt' do
+describe 'dnsquery::txt' do
   it 'returns a list of lists of strings when doing a lookup' do
     results = subject.execute('google.com')
     expect(results).to be_a Array

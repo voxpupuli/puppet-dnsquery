@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-describe 'dns_srv' do
+describe 'dnsquery::srv' do
   it 'returns a list of MX records when doing a lookup' do
     results = subject.execute('_spotify-client._tcp.spotify.com')
     expect(results).to be_a Array
