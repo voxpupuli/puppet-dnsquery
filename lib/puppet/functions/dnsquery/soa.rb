@@ -3,7 +3,7 @@
 #
 # An optional lambda can be given to return a default value in case the
 # lookup fails. The lambda will only be called if the lookup failed.
-Puppet::Functions.create_function(:dns_soa) do
+Puppet::Functions.create_function(:'dnsquery::soa') do
   dispatch :dns_soa do
     param 'String', :record
   end
@@ -14,8 +14,18 @@ Puppet::Functions.create_function(:dns_soa) do
   end
 
   def dns_soa(record)
-    Puppet.deprecation_warning('dns_soa', 'This method is deprecated please use the namspaced version dnsquery::soa')
-    call_function('dnsquery::soa', record)
+    res = Resolv::DNS.new.getresource(
+      record, Resolv::DNS::Resource::IN::SOA
+    )
+    {
+      'expire'  => res.expire,
+      'minimum' => res.minimum,
+      'mname'   => res.mname,
+      'refresh' => res.refresh,
+      'retry'   => res.retry,
+      'rname'   => res.rname,
+      'serial'  => res.serial,
+    }
   end
 
   def dns_soa_with_default(record)
