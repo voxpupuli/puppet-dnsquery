@@ -35,6 +35,10 @@ array will be an array of hashes containing a `preference` & `exchange` key.
 
 Retrieves DNS PTR records and returns it as an array of strings.
 
+### dns_rlookup
+
+Performs a reverse lookup of all records for a given address, and returns results as an array of strings.
+
 ### dns_srv
 
 Retrieves DNS SRV records and returns it as an array. Each record in the
