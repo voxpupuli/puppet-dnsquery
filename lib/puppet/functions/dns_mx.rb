@@ -16,7 +16,7 @@ Puppet::Functions.create_function(:dns_mx) do
   end
 
   def dns_mx(record)
-    Puppet.deprecation_warning('dns_mx', 'This method is deprecated please use the namspaced version dnsquery::mx')
+    Puppet.deprecation_warning('dns_mx', 'This method is deprecated please use the namespaced version dnsquery::mx')
     call_function('dnsquery::mx', record)
   end
 
