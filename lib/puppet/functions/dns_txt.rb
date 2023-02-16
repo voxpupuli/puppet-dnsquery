@@ -16,7 +16,7 @@ Puppet::Functions.create_function(:dns_txt) do
   end
 
   def dns_txt(record)
-    Puppet.deprecation_warning('dns_txt', 'This method is deprecated please use the namspaced version dnsquery::txt')
+    Puppet.deprecation_warning('dns_txt', 'This method is deprecated please use the namespaced version dnsquery::txt')
     call_function('dnsquery::txt', record)
   end
 
