@@ -1,39 +1,27 @@
 # frozen_string_literal: true
 
-# Retrieves DNS MX records and returns it as an array. Each record in the
-# array will be an array of hashes with a preference and exchange field.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
+# Retrieves DNS MX records for a domain and returns them as an array.
 Puppet::Functions.create_function(:'dnsquery::mx') do
+  # @param domain the dns domain to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return An array of hashes representing the mx records for domain
   dispatch :dns_mx do
-    param 'String', :record
+    param 'Stdlib::Fqdn', :domain
+    optional_block_param :block
+    return_type 'Array[Dnsquery::Mx]'
   end
 
-  dispatch :dns_mx_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_mx(record)
-    Resolv::DNS.new.getresources(
-      record, Resolv::DNS::Resource::IN::MX
+  def dns_mx(domain)
+    ret = Resolv::DNS.new.getresources(
+      domain, Resolv::DNS::Resource::IN::MX
     ).map do |res|
       {
         'preference' => res.preference,
         'exchange' => res.exchange.to_s
       }
     end
-  end
-
-  def dns_mx_with_default(record)
-    ret = dns_mx(record)
-    if ret.empty?
-      yield
-    else
-      ret
-    end
+    block_given? && ret.empty? ? yield : ret
   rescue Resolv::ResolvError
-    yield
+    block_given? ? yield : raise
   end
 end

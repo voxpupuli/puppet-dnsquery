@@ -48,3 +48,4 @@ array will be an array of hashes containing a `priority`, `weight`, `port` and `
 
 Retrieves DNS TXT records and returns it as an array. Each record in the
 array will be a array containing the strings of the TXT record.
+foo

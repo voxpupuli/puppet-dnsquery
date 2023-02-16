@@ -9,4 +9,13 @@ describe 'dnsquery::ptr' do
     expect(results).to be_a Array
     expect(results).to all(be_a(String))
   end
+
+  it 'returns lambda value if result is empty' do
+    is_expected.to(
+      run.
+      with_params('1.2.0.192.in-addr.arpa').
+      and_return(['ptr.exampl.org']).
+      with_lambda { ['ptr.exampl.org'] }
+    )
+  end
 end

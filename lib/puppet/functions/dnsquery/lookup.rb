@@ -3,31 +3,20 @@
 # Do a DNS lookup and returns an array of addresses.
 # This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
 # See the more specific functions if you only want one type returned.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
 Puppet::Functions.create_function(:'dnsquery::lookup') do
+  # @param domain the dns domain to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return An array of A and AAAA answers matching domain
   dispatch :dns_lookup do
-    param 'String', :record
+    param 'Stdlib::Fqdn', :domain
+    optional_block_param :block
+    return_type 'Array[Stdlib::IP::Address::Nosubnet]'
   end
 
-  dispatch :dns_lookup_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_lookup(record)
-    Resolv::DNS.new.getaddresses(record).map(&:to_s)
-  end
-
-  def dns_lookup_with_default(record)
-    ret = dns_lookup(record)
-    if ret.empty?
-      yield
-    else
-      ret
-    end
+  def dns_lookup(domain)
+    ret = Resolv::DNS.new.getaddresses(domain).map(&:to_s)
+    block_given? && ret.empty? ? yield : ret
   rescue Resolv::ResolvError
-    yield
+    block_given? ? yield : raise
   end
 end

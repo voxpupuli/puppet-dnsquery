@@ -1,43 +1,30 @@
 # frozen_string_literal: true
 
-# Retrieves DNS TXT records and returns it as an array. Each record in the
-# array will be a array containing the strings of the TXT record.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
+# Retrieves DNS SOA records and returns it as a hash.
 Puppet::Functions.create_function(:'dnsquery::soa') do
+  # @param question the dns question to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return The SOA record matching domain
   dispatch :dns_soa do
-    param 'String', :record
+    param 'Stdlib::Fqdn', :question
+    optional_block_param :block
+    return_type 'Dnsquery::Soa'
   end
 
-  dispatch :dns_soa_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_soa(record)
+  def dns_soa(question)
     res = Resolv::DNS.new.getresource(
-      record, Resolv::DNS::Resource::IN::SOA
+      question, Resolv::DNS::Resource::IN::SOA
     )
     {
       'expire'  => res.expire,
       'minimum' => res.minimum,
-      'mname'   => res.mname,
+      'mname'   => res.mname.to_s,
       'refresh' => res.refresh,
       'retry'   => res.retry,
-      'rname'   => res.rname,
+      'rname'   => res.rname.to_s,
       'serial'  => res.serial,
     }
-  end
-
-  def dns_soa_with_default(record)
-    ret = dns_soa(record)
-    if ret.empty?
-      yield
-    else
-      ret
-    end
   rescue Resolv::ResolvError
-    yield
+    block_given? ? yield : raise
   end
 end

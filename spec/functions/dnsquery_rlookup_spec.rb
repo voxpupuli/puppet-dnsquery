@@ -14,8 +14,8 @@ describe 'dnsquery::rlookup' do
     is_expected.to(
       run.
       with_params('0.0.0.0').
-      and_return('foo.example.com').
-      with_lambda { 'foo.example.com' }
+      and_return(['foo.example.com']).
+      with_lambda { ['foo.example.com'] }
     )
   end
 end

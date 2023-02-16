@@ -1,36 +1,24 @@
 # frozen_string_literal: true
 
-# Retrieves DNS AAAA records and returns it as an array. Each record in the
-# array will be a IPv6 address.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
+# Retrieves DNS AAAA records for a domain and them it as an array.
 Puppet::Functions.create_function(:'dnsquery::aaaa') do
+  # @param domain the dns domain to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return An array of AAAA records matching domain
   dispatch :dns_aaaa do
-    param 'String', :record
+    param 'Stdlib::Fqdn', :domain
+    optional_block_param :block
+    return_type 'Array[Stdlib::IP::Address::V6::Nosubnet]'
   end
 
-  dispatch :dns_aaaa_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_aaaa(record)
-    Resolv::DNS.new.getresources(
-      record, Resolv::DNS::Resource::IN::AAAA
+  def dns_aaaa(domain)
+    ret = Resolv::DNS.new.getresources(
+      domain, Resolv::DNS::Resource::IN::AAAA
     ).map do |res|
       IPAddr.new(res.address.to_s).to_s
     end
-  end
-
-  def dns_aaaa_with_default(record)
-    ret = dns_aaaa(record)
-    if ret.empty?
-      yield
-    else
-      ret
-    end
+    block_given? && ret.empty? ? yield : ret
   rescue Resolv::ResolvError
-    yield
+    block_given? ? yield : raise
   end
 end

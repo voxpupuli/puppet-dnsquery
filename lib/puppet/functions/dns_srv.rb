@@ -1,33 +1,19 @@
 # frozen_string_literal: true
 
-# Retrieves DNS MX records and returns it as an array. Each record in the
-# array will be an array of hashes with a preference and exchange field.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
+# [DEPRECATED] Retirve the SRV domain for a specific domain
 Puppet::Functions.create_function(:dns_srv) do
+  # @deprecated Please use the namespaced version dnsquery::ptr
+  # @param domain the dns question to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return The srv records for domain as an array of hashs
   dispatch :dns_srv do
-    param 'String', :record
+    param 'String', :domain
+    optional_block_param :block
+    return_type 'Array[Dnsquery::Srv]'
   end
 
-  dispatch :dns_srv_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_srv(record)
+  def dns_srv(domain, &block)
     Puppet.deprecation_warning('dns_srv', 'This method is deprecated please use the namespaced version dnsquery::srv')
-    call_function('dnsquery::srv', record)
-  end
-
-  def dns_srv_with_default(record)
-    ret = dns_srv(record)
-    if ret.empty?
-      yield
-    else
-      ret
-    end
-  rescue Resolv::ResolvError
-    yield
+    call_function('dnsquery::srv', domain, &block)
   end
 end

@@ -1,27 +1,19 @@
 # frozen_string_literal: true
 
-# Retrieves a DNS CNAME record and returns it as a string.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
+# [DEPRECATED] Retrieves a DNS CNAME record for a domain and returns it as a string.
 Puppet::Functions.create_function(:dns_cname) do
+  # @deprecated Please use the namespaced version dnsquery::cname
+  # @param domain the dns domain to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return An string representing the CNAME of a domain
   dispatch :dns_cname do
-    param 'String', :record
+    param 'Stdlib::Fqdn', :domain
+    optional_block_param :block
+    return_type 'Stdlib::Fqdn'
   end
 
-  dispatch :dns_cname_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_cname(record)
+  def dns_cname(domain, &block)
     Puppet.deprecation_warning('dns_cname', 'This method is deprecated please use the namespaced version dnsquery::cname')
-    call_function('dnsquery::cname', record)
-  end
-
-  def dns_cname_with_default(record)
-    dns_cname(record)
-  rescue Resolv::ResolvError
-    yield
+    call_function('dnsquery::cname', domain, &block)
   end
 end
