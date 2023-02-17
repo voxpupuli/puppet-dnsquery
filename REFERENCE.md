@@ -19,6 +19,7 @@
 
 ### Data types
 
+* [`Dnsquery::Config_info`](#Dnsquery--Config_info): Type to validate the config_info passed to Resolve::DNS.new
 * [`Dnsquery::Mx`](#Dnsquery--Mx): type used for DNS MX records
 * [`Dnsquery::Soa`](#Dnsquery--Soa): type used for DNS SOA records
 * [`Dnsquery::Srv`](#Dnsquery--Srv): type used for DNS SRV records
@@ -31,7 +32,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS A records for a domain and returns them as an array.
 
-#### `dnsquery::a(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::a(Stdlib::Fqdn $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS A records for a domain and returns them as an array.
 
@@ -42,6 +43,12 @@ Returns: `Array[Stdlib::IP::Address::V4::Nosubnet]` An array of A answers matchi
 Data type: `Stdlib::Fqdn`
 
 the dns domain to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -55,7 +62,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS AAAA records for a domain and them it as an array.
 
-#### `dnsquery::aaaa(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::aaaa(Stdlib::Fqdn $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS AAAA records for a domain and them it as an array.
 
@@ -66,6 +73,12 @@ Returns: `Array[Stdlib::IP::Address::V6::Nosubnet]` An array of AAAA records mat
 Data type: `Stdlib::Fqdn`
 
 the dns domain to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -79,7 +92,7 @@ Type: Ruby 4.x API
 
 Retrieves a DNS CNAME record for a domain and returns it as a string.
 
-#### `dnsquery::cname(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::cname(Stdlib::Fqdn $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves a DNS CNAME record for a domain and returns it as a string.
 
@@ -90,6 +103,12 @@ Returns: `String` An string representing the CNAME of a domain
 Data type: `Stdlib::Fqdn`
 
 the dns domain to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -105,7 +124,7 @@ Do a DNS lookup and returns an array of addresses.
 This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
 See the more specific functions if you only want one type returned.
 
-#### `dnsquery::lookup(Stdlib::Fqdn $domain, Optional[Boolean] $force_ipv6, Optional[Callable] &$block)`
+#### `dnsquery::lookup(Stdlib::Fqdn $domain, Optional[Boolean] $force_ipv6, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Do a DNS lookup and returns an array of addresses.
 This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
@@ -125,6 +144,12 @@ Data type: `Optional[Boolean]`
 
 ensure we get AAAA answers even if the requestor has no global ipv6 address
 
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
+
 ##### `&block`
 
 Data type: `Optional[Callable]`
@@ -137,7 +162,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS MX records for a domain and returns them as an array.
 
-#### `dnsquery::mx(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::mx(Stdlib::Fqdn $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS MX records for a domain and returns them as an array.
 
@@ -148,6 +173,12 @@ Returns: `Array[Dnsquery::Mx]` An array of hashes representing the mx records fo
 Data type: `Stdlib::Fqdn`
 
 the dns domain to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -161,7 +192,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS PTR records for a domain and returns them as an array.
 
-#### `dnsquery::ptr(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::ptr(Stdlib::Fqdn $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS PTR records for a domain and returns them as an array.
 
@@ -172,6 +203,12 @@ Returns: `Array[Stdlib::Fqdn]` An array of PTR answeres matching domain
 Data type: `Stdlib::Fqdn`
 
 the dns domain to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -185,7 +222,7 @@ Type: Ruby 4.x API
 
 Retrieves results from DNS reverse lookup and returns it as an array.
 
-#### `dnsquery::rlookup(Stdlib::IP::Address::Nosubnet $address, Optional[Callable] &$block)`
+#### `dnsquery::rlookup(Stdlib::IP::Address::Nosubnet $address, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves results from DNS reverse lookup and returns it as an array.
 
@@ -196,6 +233,12 @@ Returns: `Array[Stdlib::Fqdn]` An array of hostnames matching the ip address
 Data type: `Stdlib::IP::Address::Nosubnet`
 
 the ip address to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -209,7 +252,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS SOA records and returns it as a hash.
 
-#### `dnsquery::soa(Stdlib::Fqdn $question, Optional[Callable] &$block)`
+#### `dnsquery::soa(Stdlib::Fqdn $question, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS SOA records and returns it as a hash.
 
@@ -220,6 +263,12 @@ Returns: `Dnsquery::Soa` The SOA record matching domain
 Data type: `Stdlib::Fqdn`
 
 the dns question to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -233,7 +282,7 @@ Type: Ruby 4.x API
 
 Retirve the SRV domain for a specific domain
 
-#### `dnsquery::srv(String $domain, Optional[Callable] &$block)`
+#### `dnsquery::srv(String $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retirve the SRV domain for a specific domain
 
@@ -244,6 +293,12 @@ Returns: `Array[Dnsquery::Srv]` The srv records for domain as an array of hashs
 Data type: `String`
 
 the dns question to lookup
+
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
 
 ##### `&block`
 
@@ -257,7 +312,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS TXT records for a domain and return as an array.
 
-#### `dnsquery::txt(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::txt(Stdlib::Fqdn $domain, Optional[Dnsquery::Config_info] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS TXT records for a domain and return as an array.
 
@@ -269,6 +324,12 @@ Data type: `Stdlib::Fqdn`
 
 the dns question to lookup
 
+##### `config_info`
+
+Data type: `Optional[Dnsquery::Config_info]`
+
+used to override the config for Resolve::DNS.new
+
 ##### `&block`
 
 Data type: `Optional[Callable]`
@@ -276,6 +337,20 @@ Data type: `Optional[Callable]`
 an optional lambda to return a default value in case the lookup fails
 
 ## Data types
+
+### <a name="Dnsquery--Config_info"></a>`Dnsquery::Config_info`
+
+Type to validate the config_info passed to Resolve::DNS.new
+
+Alias of
+
+```puppet
+Struct[{
+  'nameserver'       => Variant[Stdlib::IP::Address::Nosubnet, Array[Stdlib::IP::Address::Nosubnet]],
+  Optional['search'] => Array[Stdlib::Fqdn],
+  Optional['ndots']  => Integer[1,63],
+}]
+```
 
 ### <a name="Dnsquery--Mx"></a>`Dnsquery::Mx`
 
