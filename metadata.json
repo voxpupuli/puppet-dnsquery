@@ -1,6 +1,6 @@
 {
   "name": "voxpupuli-dnsquery",
-  "version": "3.0.0",
+  "version": "4.0.0-rc0",
   "author": "Vox Pupuli",
   "summary": "Query functions for DNS",
   "license": "MIT",

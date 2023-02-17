@@ -1,51 +1,24 @@
-DNS query functions
-===================
+## Overview
 
-This module contains query functions for DNS for use from Puppet.
+This module provides functions for querying dns records
 
-Usage
------
+## Setup
 
-All functions can take a optional second lambda argument that is called if the lookup returned no values. Then the result of the lambda will be used instead.
+```console
+$ sudo puppet module install puppet-dnsquery
+```
 
-### dns_lookup
+## Usage
 
-Does a DNS lookup and returns an array of addresses.
+Since `puppet/dnsquery` version 4, all functions are provided under the `dnsquery` namespace.
+Non namespaced versions will be removed in version 5
 
-### dns_a
+All functions are documented in [REFERENCE.md](REFERENCE.md)
 
-Retrieves DNS A records and returns it as an array. Each record in the
-array will be a IPv4 address.
+## Development
 
-### dns_aaaa
+We highly welcome new contributions to this module, especially those that
+include documentation, and rspec tests ;) but will happily guide you through
+the process, so, yes, please submit that pull request!
 
-Retrieves DNS AAAA records and returns it as an array. Each record in the
-array will be a IPv6 address.
-
-### dns_cname
-
-Retrieves a DNS CNAME record and returns it as a string.
-
-### dns_mx
-
-Retrieves DNS MX records and returns it as an array. Each record in the
-array will be an array of hashes containing a `preference` & `exchange` key.
-
-### dns_ptr
-
-Retrieves DNS PTR records and returns it as an array of strings.
-
-### dns_rlookup
-
-Performs a reverse lookup of all records for a given address, and returns results as an array of strings.
-
-### dns_srv
-
-Retrieves DNS SRV records and returns it as an array. Each record in the
-array will be an array of hashes containing a `priority`, `weight`, `port` and `target` key.
-
-### dns_txt
-
-Retrieves DNS TXT records and returns it as an array. Each record in the
-array will be a array containing the strings of the TXT record.
-foo
+Please see the [contributing guide](https://github.com/voxpupuli/puppet-dnsquery/blob/master/.github/CONTRIBUTING.md) for more information
