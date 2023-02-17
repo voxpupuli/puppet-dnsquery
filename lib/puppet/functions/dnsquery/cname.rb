@@ -1,28 +1,21 @@
 # frozen_string_literal: true
 
-# Retrieves a DNS CNAME record and returns it as a string.
-#
-# An optional lambda can be given to return a default value in case the
-# lookup fails. The lambda will only be called if the lookup failed.
+# Retrieves a DNS CNAME record for a domain and returns it as a string.
 Puppet::Functions.create_function(:'dnsquery::cname') do
+  # @param domain the dns domain to lookup
+  # @param block an optional lambda to return a default value in case the lookup fails
+  # @return An string representing the CNAME of a domain
   dispatch :dns_cname do
-    param 'String', :record
+    param 'Stdlib::Fqdn', :domain
+    optional_block_param :block
+    return_type 'String'
   end
 
-  dispatch :dns_cname_with_default do
-    param 'String', :record
-    block_param
-  end
-
-  def dns_cname(record)
+  def dns_cname(domain)
     Resolv::DNS.new.getresource(
-      record, Resolv::DNS::Resource::IN::CNAME
+      domain, Resolv::DNS::Resource::IN::CNAME
     ).name.to_s
-  end
-
-  def dns_cname_with_default(record)
-    dns_cname(record)
   rescue Resolv::ResolvError
-    yield
+    block_given? ? yield : raise
   end
 end

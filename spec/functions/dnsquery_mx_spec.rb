@@ -2,7 +2,10 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
+mx = {
+  'preference' => 10,
+  'exchange' => 'mx.exampl.org',
+}
 describe 'dnsquery::mx' do
   it 'returns a list of MX records when doing a lookup' do
     results = subject.execute('google.com')
@@ -12,5 +15,14 @@ describe 'dnsquery::mx' do
       expect(res['preference']).to be_a Integer
       expect(res['exchange']).to be_a String
     end
+  end
+
+  it 'returns lambda value if result is empty' do
+    is_expected.to(
+      run.
+      with_params('foo.example.com').
+      and_return([mx]).
+      with_lambda { [mx] }
+    )
   end
 end

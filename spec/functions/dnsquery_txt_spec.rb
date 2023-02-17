@@ -10,4 +10,13 @@ describe 'dnsquery::txt' do
     expect(results).to all(be_a(Array))
     expect(results).to all(all(be_a(String)))
   end
+
+  it 'returns lambda value if result is empty' do
+    is_expected.to(
+      run.
+      with_params('foo.example.com').
+      and_return([['foobar']]).
+      with_lambda { [['foobar']] }
+    )
+  end
 end
