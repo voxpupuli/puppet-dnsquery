@@ -1,5 +1,5 @@
 {
-  "name": "voxpupuli-dnsquery",
+  "name": "puppet-dnsquery",
   "version": "4.0.1-rc0",
   "author": "Vox Pupuli",
   "summary": "Query functions for DNS",
