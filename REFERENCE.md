@@ -309,7 +309,7 @@ Do a DNS lookup and returns an array of addresses.
 This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
 See the more specific functions if you only want one type returned.
 
-#### `dnsquery::lookup(Stdlib::Fqdn $domain, Optional[Callable] &$block)`
+#### `dnsquery::lookup(Stdlib::Fqdn $domain, Optional[Boolean] $force_ipv6, Optional[Callable] &$block)`
 
 Do a DNS lookup and returns an array of addresses.
 This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
@@ -322,6 +322,12 @@ Returns: `Array[Stdlib::IP::Address::Nosubnet]` An array of A and AAAA answers m
 Data type: `Stdlib::Fqdn`
 
 the dns domain to lookup
+
+##### `force_ipv6`
+
+Data type: `Optional[Boolean]`
+
+ensure we get AAAA answers even if the requestor has no global ipv6 address
 
 ##### `&block`
 
