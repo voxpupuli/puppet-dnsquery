@@ -15,7 +15,7 @@ Puppet::Functions.create_function(:dns_lookup) do
   end
 
   def dns_lookup(domain, &block)
-    Puppet.deprecation_warning('dns_lookup', 'This method is deprecated please use the namespaced version dnsquery::lookup')
+    Puppet.deprecation_warning('This method is deprecated please use the namespaced version dnsquery::lookup', 'dns_lookup')
     call_function('dnsquery::lookup', domain, &block)
   end
 end

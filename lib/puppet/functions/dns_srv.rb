@@ -13,7 +13,7 @@ Puppet::Functions.create_function(:dns_srv) do
   end
 
   def dns_srv(domain, &block)
-    Puppet.deprecation_warning('dns_srv', 'This method is deprecated please use the namespaced version dnsquery::srv')
+    Puppet.deprecation_warning('This method is deprecated please use the namespaced version dnsquery::srv', 'dns_srv')
     call_function('dnsquery::srv', domain, &block)
   end
 end

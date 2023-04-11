@@ -13,7 +13,7 @@ Puppet::Functions.create_function(:dns_mx) do
   end
 
   def dns_mx(domain, &block)
-    Puppet.deprecation_warning('dns_mx', 'This method is deprecated please use the namespaced version dnsquery::mx')
+    Puppet.deprecation_warning('This method is deprecated please use the namespaced version dnsquery::mx', 'dns_mx')
     call_function('dnsquery::mx', domain, &block)
   end
 end
