@@ -8,14 +8,13 @@ Puppet::Functions.create_function(:'dnsquery::txt') do
   dispatch :dns_txt do
     param 'Stdlib::Fqdn', :domain
     optional_block_param :block
-    return_type 'Array[Array[String]]'
+    return_type 'Array[String]'
   end
 
   def dns_txt(domain)
     ret = Resolv::DNS.new.getresources(
       domain, Resolv::DNS::Resource::IN::TXT
-    ).map(&:strings)
-    # TODO: we should really do .map(&:join) above but it would be a breaking change
+    ).map(&:strings).map(&:join)
     block_given? && ret.empty? ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise

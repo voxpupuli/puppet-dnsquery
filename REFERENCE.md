@@ -261,7 +261,7 @@ Retrieves DNS TXT records for a domain and return as an array.
 
 Retrieves DNS TXT records for a domain and return as an array.
 
-Returns: `Array[Array[String]]` The txt domain for a domain
+Returns: `Array[String]` The txt domain for a domain
 
 ##### `domain`
 
