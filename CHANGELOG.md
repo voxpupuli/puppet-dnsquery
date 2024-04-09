@@ -4,12 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.1.0](https://github.com/voxpupuli/puppet-dnsquery/tree/v5.1.0) (2024-04-09)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-dnsquery/compare/v5.0.1...v5.1.0)
+
+**Implemented enhancements:**
+
+- Add Puppet 8 support [\#145](https://github.com/voxpupuli/puppet-dnsquery/pull/145) ([bastelfreak](https://github.com/bastelfreak))
+- Relax dependencies version requirements [\#144](https://github.com/voxpupuli/puppet-dnsquery/pull/144) ([smortex](https://github.com/smortex))
+
 ## [v5.0.1](https://github.com/voxpupuli/puppet-dnsquery/tree/v5.0.1) (2023-05-10)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-dnsquery/compare/v5.0.0...v5.0.1)
 
 **Fixed bugs:**
 
+- dnsquery::lookup\(domain, force\_ipv6\) fails [\#138](https://github.com/voxpupuli/puppet-dnsquery/issues/138)
 - 138: Allow nil value for config\_info [\#141](https://github.com/voxpupuli/puppet-dnsquery/pull/141) ([b4ldr](https://github.com/b4ldr))
 
 ## [v5.0.0](https://github.com/voxpupuli/puppet-dnsquery/tree/v5.0.0) (2023-04-24)
