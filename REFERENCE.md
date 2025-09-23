@@ -346,9 +346,9 @@ Alias of
 
 ```puppet
 Struct[{
-    'nameserver'       => Variant[Stdlib::IP::Address::Nosubnet, Array[Stdlib::IP::Address::Nosubnet]],
-    Optional['search'] => Array[Stdlib::Fqdn],
-    Optional['ndots']  => Integer[1,63],
+  'nameserver'       => Variant[Stdlib::IP::Address::Nosubnet, Array[Stdlib::IP::Address::Nosubnet]],
+  Optional['search'] => Array[Stdlib::Fqdn],
+  Optional['ndots']  => Integer[1,63],
 }]
 ```
 
@@ -360,8 +360,8 @@ Alias of
 
 ```puppet
 Struct[{
-    preference => Integer[0,65535],
-    exchange   => Stdlib::Fqdn,
+  preference => Integer[0,65535],
+  exchange   => Stdlib::Fqdn,
 }]
 ```
 
@@ -373,13 +373,13 @@ Alias of
 
 ```puppet
 Struct[{
-    mname   => Stdlib::Fqdn,
-    rname   => Stdlib::Fqdn,
-    expire  => Integer,
-    minimum => Integer,
-    refresh => Integer,
-    retry   => Integer,
-    serial  => Integer,
+  mname   => Stdlib::Fqdn,
+  rname   => Stdlib::Fqdn,
+  expire  => Integer,
+  minimum => Integer,
+  refresh => Integer,
+  retry   => Integer,
+  serial  => Integer,
 }]
 ```
 
@@ -391,10 +391,10 @@ Alias of
 
 ```puppet
 Struct[{
-    priority => Integer[0,65535],
-    weight   => Integer[0,65535],
-    port     => Stdlib::Port,
-    target   => Stdlib::Fqdn,
+  priority => Integer[0,65535],
+  weight   => Integer[0,65535],
+  port     => Stdlib::Port,
+  target   => Stdlib::Fqdn,
 }]
 ```
 
