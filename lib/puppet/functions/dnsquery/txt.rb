@@ -9,7 +9,7 @@ Puppet::Functions.create_function(:'dnsquery::txt') do
   # @param block an optional lambda to return a default value in case the lookup fails
   # @return The txt domain for a domain
   dispatch :dns_txt do
-    param 'Stdlib::Fqdn', :domain
+    param 'String', :domain
     optional_param 'Optional[Dnsquery::Config_info]', :config_info
     optional_block_param :block
     return_type 'Array[String]'
