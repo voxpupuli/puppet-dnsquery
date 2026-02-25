@@ -12,7 +12,7 @@ Puppet::Functions.create_function(:'dnsquery::rlookup') do
     param 'Stdlib::IP::Address::Nosubnet', :address
     optional_param 'Optional[Dnsquery::Config_info]', :config_info
     optional_block_param :block
-    return_type 'Array[Stdlib::Fqdn]'
+    return_type 'Array[Dnsquery::Rr_name]'
   end
 
   def dns_rlookup(address, config_info = nil)

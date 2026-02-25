@@ -12,7 +12,7 @@ Puppet::Functions.create_function(:'dnsquery::lookup') do
   # @param block an optional lambda to return a default value in case the lookup fails
   # @return An array of A and AAAA answers matching domain
   dispatch :dns_lookup do
-    param 'Stdlib::Fqdn', :domain
+    param 'Dnsquery::Rr_name', :domain
     optional_param 'Boolean', :force_ipv6
     optional_param 'Optional[Dnsquery::Config_info]', :config_info
     optional_block_param :block
