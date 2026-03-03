@@ -11,4 +11,4 @@
 # > and is typically written and displayed as ".".  Those restrictions
 # > aside, any binary string whatever can be used as the label of any
 # > resource record.
-type Dnsquery::Rr_name = String[1]
+type Dnsquery::Rr_name = String[1, 255]

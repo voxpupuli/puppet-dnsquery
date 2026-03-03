@@ -380,7 +380,7 @@ The name must comply with RFC2181:
 > aside, any binary string whatever can be used as the label of any
 > resource record.
 
-Alias of `String[1]`
+Alias of `String[1, 255]`
 
 ### <a name="Dnsquery--Soa"></a>`Dnsquery::Soa`
 
