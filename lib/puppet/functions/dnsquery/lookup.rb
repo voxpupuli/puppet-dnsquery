@@ -26,7 +26,7 @@ Puppet::Functions.create_function(:'dnsquery::lookup') do
           else
             resolver.getaddresses(domain).map(&:to_s)
           end
-    block_given? && ret.empty? ? yield : ret
+    (block_given? && ret.empty?) ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise
   end

@@ -25,8 +25,6 @@ describe 'dnsquery::cname' do
   end
 
   it 'raises an error on empty reply' do
-    is_expected.to run.
-      with_params('foo.example.com').
-      and_raise_error(Resolv::ResolvError)
+    is_expected.to run.with_params('foo.example.com').and_raise_error(Resolv::ResolvError)
   end
 end

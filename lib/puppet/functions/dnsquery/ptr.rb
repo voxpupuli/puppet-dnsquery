@@ -22,7 +22,7 @@ Puppet::Functions.create_function(:'dnsquery::ptr') do
     ).map do |res|
       res.name.to_s
     end
-    block_given? && ret.empty? ? yield : ret
+    (block_given? && ret.empty?) ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise
   end

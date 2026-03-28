@@ -29,11 +29,6 @@ describe 'dnsquery::ptr' do
   end
 
   it 'returns lambda value if result is empty' do
-    is_expected.to(
-      run.
-      with_params('1.2.0.192.in-addr.arpa').
-      and_return(['ptr.exampl.org']).
-      with_lambda { ['ptr.exampl.org'] }
-    )
+    is_expected.to(run.with_params('1.2.0.192.in-addr.arpa').and_return(['ptr.exampl.org']).with_lambda { ['ptr.exampl.org'] })
   end
 end

@@ -20,7 +20,7 @@ Puppet::Functions.create_function(:'dnsquery::txt') do
     ret = resolver.getresources(
       domain, Resolv::DNS::Resource::IN::TXT
     ).map(&:strings).map(&:join)
-    block_given? && ret.empty? ? yield : ret
+    (block_given? && ret.empty?) ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise
   end

@@ -58,11 +58,6 @@ describe 'dnsquery::srv' do
   end
 
   it 'returns lambda value if result is empty' do
-    is_expected.to(
-      run.
-      with_params('foo.example.com').
-      and_return([srv]).
-      with_lambda { [srv] }
-    )
+    is_expected.to(run.with_params('foo.example.com').and_return([srv]).with_lambda { [srv] })
   end
 end
