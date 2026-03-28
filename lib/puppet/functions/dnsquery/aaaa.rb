@@ -22,7 +22,7 @@ Puppet::Functions.create_function(:'dnsquery::aaaa') do
     ).map do |res|
       IPAddr.new(res.address.to_s).to_s
     end
-    block_given? && ret.empty? ? yield : ret
+    (block_given? && ret.empty?) ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise
   end

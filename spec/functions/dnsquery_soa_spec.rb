@@ -60,11 +60,6 @@ describe 'dnsquery::soa' do
   end
 
   it 'returns lambda value if result is empty' do
-    is_expected.to(
-      run.
-      with_params('foo.example.com').
-      and_return(soa).
-      with_lambda { soa }
-    )
+    is_expected.to(run.with_params('foo.example.com').and_return(soa).with_lambda { soa })
   end
 end

@@ -37,11 +37,6 @@ describe 'dnsquery::lookup' do
   end
 
   it 'returns lambda value if result is empty' do
-    is_expected.to(
-      run.
-      with_params('foo.example.com').
-      and_return(['127.0.0.1']).
-      with_lambda { ['127.0.0.1'] }
-    )
+    is_expected.to(run.with_params('foo.example.com').and_return(['127.0.0.1']).with_lambda { ['127.0.0.1'] })
   end
 end

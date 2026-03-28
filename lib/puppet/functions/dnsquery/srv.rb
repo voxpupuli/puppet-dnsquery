@@ -25,10 +25,10 @@ Puppet::Functions.create_function(:'dnsquery::srv') do
         'priority' => res.priority,
         'weight' => res.weight,
         'port' => res.port,
-        'target' => res.target.to_s
+        'target' => res.target.to_s,
       }
     end
-    block_given? && ret.empty? ? yield : ret
+    (block_given? && ret.empty?) ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise
   end

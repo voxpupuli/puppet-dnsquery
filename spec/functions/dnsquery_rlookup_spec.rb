@@ -17,11 +17,6 @@ describe 'dnsquery::rlookup' do
   end
 
   it 'returns lambda value if result is empty' do
-    is_expected.to(
-      run.
-      with_params('0.0.0.0').
-      and_return(['foo.example.com']).
-      with_lambda { ['foo.example.com'] }
-    )
+    is_expected.to(run.with_params('0.0.0.0').and_return(['foo.example.com']).with_lambda { ['foo.example.com'] })
   end
 end

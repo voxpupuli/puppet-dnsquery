@@ -29,11 +29,6 @@ describe 'dnsquery::aaaa' do
   end
 
   it 'returns lambda value if result is empty' do
-    is_expected.to(
-      run.
-      with_params('foo.example.com').
-      and_return(['::1']).
-      with_lambda { ['::1'] }
-    )
+    is_expected.to(run.with_params('foo.example.com').and_return(['::1']).with_lambda { ['::1'] })
   end
 end

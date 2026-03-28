@@ -22,10 +22,10 @@ Puppet::Functions.create_function(:'dnsquery::mx') do
     ).map do |res|
       {
         'preference' => res.preference,
-        'exchange' => res.exchange.to_s
+        'exchange' => res.exchange.to_s,
       }
     end
-    block_given? && ret.empty? ? yield : ret
+    (block_given? && ret.empty?) ? yield : ret
   rescue Resolv::ResolvError
     block_given? ? yield : raise
   end
