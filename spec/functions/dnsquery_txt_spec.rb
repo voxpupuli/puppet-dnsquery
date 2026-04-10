@@ -5,7 +5,7 @@ require 'spec_helper'
 
 describe 'dnsquery::txt' do
   it 'returns a list of strings when doing a lookup' do
-    results = subject.execute('google.com')
+    results = subject.execute('_dmarc.google.com.')
     expect(results).to be_a Array
     expect(results).to all(be_a(String))
   end

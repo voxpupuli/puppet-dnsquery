@@ -9,7 +9,7 @@ Puppet::Functions.create_function(:'dnsquery::cname') do
   # @param block an optional lambda to return a default value in case the lookup fails
   # @return An string representing the CNAME of a domain
   dispatch :dns_cname do
-    param 'Stdlib::Fqdn', :domain
+    param 'Dnsquery::Rr_name', :domain
     optional_param 'Optional[Dnsquery::Config_info]', :config_info
     optional_block_param :block
     return_type 'String'

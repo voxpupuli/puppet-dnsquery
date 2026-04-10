@@ -9,10 +9,10 @@ Puppet::Functions.create_function(:'dnsquery::ptr') do
   # @param block an optional lambda to return a default value in case the lookup fails
   # @return An array of PTR answeres matching domain
   dispatch :dns_ptr do
-    param 'Stdlib::Fqdn', :domain
+    param 'Dnsquery::Rr_name', :domain
     optional_param 'Optional[Dnsquery::Config_info]', :config_info
     optional_block_param :block
-    return_type 'Array[Stdlib::Fqdn]'
+    return_type 'Array[Dnsquery::Rr_name]'
   end
 
   def dns_ptr(domain, config_info = nil)

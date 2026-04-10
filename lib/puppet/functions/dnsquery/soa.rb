@@ -9,7 +9,7 @@ Puppet::Functions.create_function(:'dnsquery::soa') do
   # @param block an optional lambda to return a default value in case the lookup fails
   # @return The SOA record matching domain
   dispatch :dns_soa do
-    param 'Stdlib::Fqdn', :question
+    param 'Dnsquery::Rr_name', :question
     optional_param 'Optional[Dnsquery::Config_info]', :config_info
     optional_block_param :block
     return_type 'Dnsquery::Soa'

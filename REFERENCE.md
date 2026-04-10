@@ -21,6 +21,7 @@
 
 * [`Dnsquery::Config_info`](#Dnsquery--Config_info): Type to validate the config_info passed to Resolve::DNS.new
 * [`Dnsquery::Mx`](#Dnsquery--Mx): type used for DNS MX records
+* [`Dnsquery::Rr_name`](#Dnsquery--Rr_name): type used for resource record names
 * [`Dnsquery::Soa`](#Dnsquery--Soa): type used for DNS SOA records
 * [`Dnsquery::Srv`](#Dnsquery--Srv): type used for DNS SRV records
 
@@ -32,7 +33,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS A records for a domain and returns them as an array.
 
-#### `dnsquery::a(Stdlib::Fqdn $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::a(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS A records for a domain and returns them as an array.
 
@@ -40,7 +41,7 @@ Returns: `Array[Stdlib::IP::Address::V4::Nosubnet]` An array of A answers matchi
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
 
@@ -62,7 +63,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS AAAA records for a domain and them it as an array.
 
-#### `dnsquery::aaaa(Stdlib::Fqdn $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::aaaa(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS AAAA records for a domain and them it as an array.
 
@@ -70,7 +71,7 @@ Returns: `Array[Stdlib::IP::Address::V6::Nosubnet]` An array of AAAA records mat
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
 
@@ -92,7 +93,7 @@ Type: Ruby 4.x API
 
 Retrieves a DNS CNAME record for a domain and returns it as a string.
 
-#### `dnsquery::cname(Stdlib::Fqdn $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::cname(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves a DNS CNAME record for a domain and returns it as a string.
 
@@ -100,7 +101,7 @@ Returns: `String` An string representing the CNAME of a domain
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
 
@@ -124,7 +125,7 @@ Do a DNS lookup and returns an array of addresses.
 This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
 See the more specific functions if you only want one type returned.
 
-#### `dnsquery::lookup(Stdlib::Fqdn $domain, Optional[Boolean] $force_ipv6, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::lookup(Dnsquery::Rr_name $domain, Optional[Boolean] $force_ipv6, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Do a DNS lookup and returns an array of addresses.
 This will follow CNAMEs and return any matching IPv4 or IPv6 addresses.
@@ -134,7 +135,7 @@ Returns: `Array[Stdlib::IP::Address::Nosubnet]` An array of A and AAAA answers m
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
 
@@ -162,7 +163,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS MX records for a domain and returns them as an array.
 
-#### `dnsquery::mx(Stdlib::Fqdn $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::mx(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS MX records for a domain and returns them as an array.
 
@@ -170,7 +171,7 @@ Returns: `Array[Dnsquery::Mx]` An array of hashes representing the mx records fo
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
 
@@ -192,15 +193,15 @@ Type: Ruby 4.x API
 
 Retrieves DNS PTR records for a domain and returns them as an array.
 
-#### `dnsquery::ptr(Stdlib::Fqdn $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::ptr(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS PTR records for a domain and returns them as an array.
 
-Returns: `Array[Stdlib::Fqdn]` An array of PTR answeres matching domain
+Returns: `Array[Dnsquery::Rr_name]` An array of PTR answeres matching domain
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
 
@@ -226,7 +227,7 @@ Retrieves results from DNS reverse lookup and returns it as an array.
 
 Retrieves results from DNS reverse lookup and returns it as an array.
 
-Returns: `Array[Stdlib::Fqdn]` An array of hostnames matching the ip address
+Returns: `Array[Dnsquery::Rr_name]` An array of hostnames matching the ip address
 
 ##### `address`
 
@@ -252,7 +253,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS SOA records and returns it as a hash.
 
-#### `dnsquery::soa(Stdlib::Fqdn $question, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::soa(Dnsquery::Rr_name $question, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS SOA records and returns it as a hash.
 
@@ -260,7 +261,7 @@ Returns: `Dnsquery::Soa` The SOA record matching domain
 
 ##### `question`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns question to lookup
 
@@ -312,7 +313,7 @@ Type: Ruby 4.x API
 
 Retrieves DNS TXT records for a domain and return as an array.
 
-#### `dnsquery::txt(Stdlib::Fqdn $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+#### `dnsquery::txt(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
 
 Retrieves DNS TXT records for a domain and return as an array.
 
@@ -320,7 +321,7 @@ Returns: `Array[String]` The txt domain for a domain
 
 ##### `domain`
 
-Data type: `Stdlib::Fqdn`
+Data type: `Dnsquery::Rr_name`
 
 the dns question to lookup
 
@@ -364,6 +365,22 @@ Struct[{
   exchange   => Stdlib::Fqdn,
 }]
 ```
+
+### <a name="Dnsquery--Rr_name"></a>`Dnsquery::Rr_name`
+
+The name must comply with RFC2181:
+
+> The DNS itself places only one restriction on the particular labels
+> that can be used to identify resource records.  That one restriction
+> relates to the length of the label and the full name.  The length of
+> any one label is limited to between 1 and 63 octets.  A full domain
+> name is limited to 255 octets (including the separators).  The zero
+> length full name is defined as representing the root of the DNS tree,
+> and is typically written and displayed as ".".  Those restrictions
+> aside, any binary string whatever can be used as the label of any
+> resource record.
+
+Alias of `String[1, 255]`
 
 ### <a name="Dnsquery--Soa"></a>`Dnsquery::Soa`
 
