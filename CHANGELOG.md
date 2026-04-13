@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.0.0](https://github.com/voxpupuli/puppet-dnsquery/tree/v6.0.0) (2026-04-13)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-dnsquery/compare/v5.1.0...v6.0.0)
+
+**Breaking changes:**
+
+- Drop puppet, update openvox minimum version to 8.19 [\#165](https://github.com/voxpupuli/puppet-dnsquery/pull/165) ([TheMeier](https://github.com/TheMeier))
+
+**Implemented enhancements:**
+
+- metadata.json: Add OpenVox [\#161](https://github.com/voxpupuli/puppet-dnsquery/pull/161) ([jstraw](https://github.com/jstraw))
+
+**Fixed bugs:**
+
+- Fix unexpected limitation or resource record names [\#172](https://github.com/voxpupuli/puppet-dnsquery/pull/172) ([smortex](https://github.com/smortex))
+
 ## [v5.1.0](https://github.com/voxpupuli/puppet-dnsquery/tree/v5.1.0) (2024-04-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-dnsquery/compare/v5.0.1...v5.1.0)
@@ -128,7 +144,7 @@ These should not affect the functionality of the module.
 
 [Full Changelog](https://github.com/voxpupuli/puppet-dnsquery/compare/011cd21670f2a8a0acb8858c651b12a5bd321f54...0.1.0)
 
-**Merged pull requests:**
+**Implemented enhancements:**
 
 - dns\_lookup.rb: support arrays of names [\#1](https://github.com/voxpupuli/puppet-dnsquery/pull/1) ([pcarrier](https://github.com/pcarrier))
 
