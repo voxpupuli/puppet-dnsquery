@@ -11,6 +11,7 @@
 * [`dnsquery::cname`](#dnsquery--cname): Retrieves a DNS CNAME record for a domain and returns it as a string.
 * [`dnsquery::lookup`](#dnsquery--lookup): Do a DNS lookup and returns an array of addresses. This will follow CNAMEs and return any matching IPv4 or IPv6 addresses. See the more speci
 * [`dnsquery::mx`](#dnsquery--mx): Retrieves DNS MX records for a domain and returns them as an array.
+* [`dnsquery::ns`](#dnsquery--ns): Retrieves DNS NS records for a domain and return as an array.
 * [`dnsquery::ptr`](#dnsquery--ptr): Retrieves DNS PTR records for a domain and returns them as an array.
 * [`dnsquery::rlookup`](#dnsquery--rlookup): Retrieves results from DNS reverse lookup and returns it as an array.
 * [`dnsquery::soa`](#dnsquery--soa): Retrieves DNS SOA records and returns it as a hash.
@@ -174,6 +175,36 @@ Returns: `Array[Dnsquery::Mx]` An array of hashes representing the mx records fo
 Data type: `Dnsquery::Rr_name`
 
 the dns domain to lookup
+
+##### `config_info`
+
+Data type: `Optional[Optional[Dnsquery::Config_info]]`
+
+used to override the config for Resolve::DNS.new
+
+##### `&block`
+
+Data type: `Optional[Callable]`
+
+an optional lambda to return a default value in case the lookup fails
+
+### <a name="dnsquery--ns"></a>`dnsquery::ns`
+
+Type: Ruby 4.x API
+
+Retrieves DNS NS records for a domain and return as an array.
+
+#### `dnsquery::ns(Dnsquery::Rr_name $domain, Optional[Optional[Dnsquery::Config_info]] $config_info, Optional[Callable] &$block)`
+
+Retrieves DNS NS records for a domain and return as an array.
+
+Returns: `Array[String]` The ns domain for a domain
+
+##### `domain`
+
+Data type: `Dnsquery::Rr_name`
+
+the dns question to lookup
 
 ##### `config_info`
 
